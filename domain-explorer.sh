@@ -14,8 +14,9 @@
 # Params use:
 # $1 = url
 # I want to add more optional things in future, like:
-# -o | --output-file : select the disired file for the output
+# -o | --output-file : select the desired file for the output
 # -q | --quiet : redirect to file and does not show in screen
+# -v | --verbose: Output everything
 # -u | --url : for explicit set url, will be more beautiful hahahaha
 # -h | --help : Display help menu
 
@@ -30,6 +31,8 @@ if [ -z $1 ]; then
     exit 1
 fi
 
+# User feedback
+echo "--> Checking $1..."
 # Check if the url is a valid url
 # Hide the output of ping, including error messagens
 ping -q -c1 $1 > /dev/null 2> /dev/null
@@ -42,8 +45,8 @@ if [ $? -ne 0 ]; then
 fi
 
 # Starting downloading the index.html file
-echo "--> Downloading file..."
-wget $1
+echo "--> Downloading index file..."
+wget -q $1
 
 # Cleaning the html file:
 # - Grepping only the href= lines
@@ -60,10 +63,12 @@ echo "--> Checking internal domains..."
 # - Displaying in screen
 # - Saving into $HOSTS file
 for domain in $(cat $DOMAINS); do
-    host $domain | grep "has address" | tee -a $HOSTS
+    # For verbose output
+    # host $domain | grep "has address" | tee -a $HOSTS
+    host $domain | grep "has address" >> $HOSTS
 done
 
-echo "--> Generating output file: $HOSTS ..."
+echo "--> Generating output file: $HOSTS..."
 
 # Cleaning the auxiliary files
 echo "--> Removing auxiliary files..."
