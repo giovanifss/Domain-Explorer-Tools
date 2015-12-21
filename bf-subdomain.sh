@@ -11,6 +11,9 @@
 # Developer - Giovani Ferreira
 #------------------------------------------------------------------------------------------------------------
 
+# Trap for abort scritp with sigint
+trap "exit" INT
+
 # Check if the url was given
 if [ -z $1 ]; then
     echo -e "Incorret usage, should consider pass the url(without 'www'):\n$0 website.com wordlist(optional)"
@@ -30,7 +33,7 @@ if [ ! -z $2 ]; then
 fi
 
 # Displaying feedback
-echo Starting bruteforce in $1...
+echo "--> Starting bruteforce in $1..."
 
 # Check if the file exists
 if [ ! -e $WORDLIST ]; then
@@ -41,10 +44,10 @@ fi
 
 # Reading possible subDomains from list
 for sub in $(cat $WORDLIST); do
-    # Look for the http code response from domain
-    resp=$(curl -s -o /dev/null -w "%{http_code}" $sub.$1)
-    # Check response and store if it was sucessful
-    if [ $resp -eq '200' ]; then
+    # Ping subdomain
+    ping -q -c1 $sub.$1 > /dev/null 2> /dev/null
+    # Check if host exists
+    if [ $? -eq 0 ]; then
         echo "--> Found subdomain: $(echo $sub.$1 | tee -a $SUBDOMAINS)"
     fi
 done
