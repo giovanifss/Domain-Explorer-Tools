@@ -22,7 +22,7 @@ fi
 CONTENT="domain_content.txt"
 
 # Set the default wordlist file
-WORDLIST="Filenames_or_Directories_Common.wordlist"
+WORDLIST="content.wordlist"
 # Check if user pointed for another wordlist
 if [ ! -z $2 ]; then
     # Set the desired list from user
