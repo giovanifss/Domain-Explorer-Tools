@@ -1,5 +1,5 @@
 # Domain Explorer Tools
-A collection of some useful bash scripts for domain exploration  
+A collection of some useful bash scripts for information gathering and domain exploration.  
 
 ## Domain Explorer
 A bash script to solve intern domains of a given url:  
