@@ -70,6 +70,16 @@ A bash script for scan a especified ip range in a network, searching for alive h
 ``` ./network-block-scan.sh 216.58.202 100 150```  
 This will search all alive hosts in 216.58.202.100 ~ 216.58.202.150  
 
+## Zone Transfer
+A bash script for try a zone transfer in a given domain  
+
+#### Usage
+- Give permition for the file:  
+``` chmod +x zone-transfer.sh ```
+
+- Execute passing the target for a zone transfer:  
+``` ./zone-transfer.sh <domain for attempt>```
+
 ## License
 This collection of scripts is under the WTFPL license, you can read more about this in:  
 http://www.wtfpl.net/about/
