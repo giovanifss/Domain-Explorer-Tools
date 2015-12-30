@@ -1,5 +1,5 @@
 # Domain Explorer Tools
-A collection of some useful bash scripts for domain exploration  
+A collection of some useful bash scripts for information gathering and domain exploration.  
 
 ## Domain Explorer
 A bash script to solve intern domains of a given url:  
@@ -55,6 +55,20 @@ A bash script to find files and directories in a given domain, using burte force
 - Passing wordlist:  
 You can pass your own wordlist for brute force:  
 ``` ./content-scanner.sh <your desired url> <path-to-your-wordlist>```
+
+## Network Block Scan
+A bash script for scan a especified ip range in a network, searching for alive hosts.
+
+#### Usage
+- Give permition for the file:  
+``` chmod +x network-block-scan.sh ```
+
+- Execute passing the first 3 octets of the network's ip, the first host to be scanned and the last host to be scanned:  
+``` ./network-block-scan.sh <first-3-octets-network-ip> <first-host-to-scan> <last-host-to-scan>```
+
+- Example:  
+``` ./network-block-scan.sh 216.58.202 100 150```  
+This will search all alive hosts in 216.58.202.100 ~ 216.58.202.150  
 
 ## License
 This collection of scripts is under the WTFPL license, you can read more about this in:  
