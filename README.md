@@ -81,5 +81,5 @@ A bash script for try a zone transfer in a given domain
 ``` ./zone-transfer.sh <domain for attempt>```
 
 ## License
-This collection of scripts is under the WTFPL license, you can read more about this in:  
-http://www.wtfpl.net/about/
+This collection of scripts is under the GPLv3 license  
+See LICENSE for more details  
